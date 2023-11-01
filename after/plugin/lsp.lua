@@ -3,7 +3,7 @@ local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
+    lsp.ensure_installed({
 	'lua_ls',
 	'rust_analyzer',
 })
@@ -12,7 +12,7 @@ lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim', 'describe', 'it' }
+                globals = { 'vim', 'describe', 'it', 'before_each', 'after_each' }
             }
         }
     }

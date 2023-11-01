@@ -7,14 +7,15 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		--'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        '~/tools/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use({
 		'rose-pine/neovim',
 		as = 'rose-pine',
 		config = function()
-			vim.cmd('colorscheme rose-pine')
+			--vim.cmd('colorscheme rose-pine')
 		end
 	})
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -47,7 +48,7 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'},
 		}
     }
-    use('~/projects/vim/navlist')
+    -- use('~/projects/vim/navlist')
 
     -- use {'~/projects/vim/tree-sitter-tcl', run = 'make' }
 
@@ -60,6 +61,63 @@ return require('packer').startup(function(use)
 
     use('rust-lang/rust.vim')
 
-    use({'~/projects/vim/rsync.nvim', run = "make"})
+    --use({'~/personal/rsync.nvim', run = "make"})
 
+    use {
+        '~/personal/keystats.nvim', run = 'make',
+    }
+    use {
+        '~/personal/rsync.nvim', run = 'make',
+        requires = {
+            {'nvim-lua/plenary.nvim'}
+        },
+        config = function()
+            require("rsync").setup({
+                fugitive_sync = true
+            })
+        end
+    }
+
+    -- use({"andythigpen/nvim-coverage",
+    use({"~/tools/nvim-coverage/",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("coverage").setup()
+        end,
+    })
+
+    use('hsanson/vim-android')
+
+    use {
+        'morhetz/gruvbox',
+        config = function()
+            --vim.g.gruvbox_contrast_dark = "soft"
+            --vim.cmd.colorscheme("gruvbox")
+        end
+    }
+    use{
+        'ful1e5/onedark.nvim',
+        config = function ()
+            --vim.cmd.colorscheme("onedark")
+        end
+    }
+
+    use('folke/tokyonight.nvim')
+
+    -- tokyonight-storm ++
+
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function ()
+            vim.cmd.colorscheme("catppuccin-macchiato")
+        end
+    }
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    use('ThePrimeagen/git-worktree.nvim')
 end)
