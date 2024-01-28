@@ -26,7 +26,7 @@ return {
             vim.keymap.set('n', '<leader>wc', worktree.create_git_worktree, {})
 
             ----- plenary ----
-            vim.keymap.set("n", "<Leader>t", function()
+            vim.keymap.set("n", "<leader>t", function()
                 local cur_path = vim.fn.expand("%:p:h")
 
                 while cur_path and vim.fn.finddir("tests", cur_path) == "" do

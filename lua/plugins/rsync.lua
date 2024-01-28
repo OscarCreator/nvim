@@ -5,10 +5,8 @@ return {
         dependencies = {
             { 'nvim-lua/plenary.nvim' }
         },
-        config = function()
-            require("rsync").setup({
-                fugitive_sync = true
-            })
-        end
+        config = {
+            fugitive_sync = true
+        }
     },
 }

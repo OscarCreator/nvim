@@ -7,5 +7,7 @@ return {
     {
         'tpope/vim-fugitive',
     },
-    { 'ThePrimeagen/git-worktree.nvim' },
+    {
+        'ThePrimeagen/git-worktree.nvim',
+    },
 }

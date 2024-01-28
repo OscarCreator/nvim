@@ -1,9 +1,14 @@
 return {
     {
         "andythigpen/nvim-coverage",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-            require("coverage").setup()
-        end,
+        dependencies = {
+            "nvim-lua/plenary.nvim"
+        },
+        config = {},
+        cmd = {
+            "Coverage",
+            "CoverageLoad",
+            "CoverageLoadLcov",
+        }
     },
 }
