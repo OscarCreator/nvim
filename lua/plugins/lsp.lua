@@ -1,14 +1,16 @@
 return {
     {
         'folke/neodev.nvim',
-        config = {}
     },
     {
         'sourcegraph/sg.nvim',
         build = 'nvim -l build/init.lua',
         config = {},
     },
-    { 'rust-lang/rust.vim' },
+    {
+        'rust-lang/rust.vim',
+        ft = "rust"
+    },
     {
         {
             'VonHeikemen/lsp-zero.nvim',
@@ -127,7 +129,6 @@ return {
                 { 'hrsh7th/cmp-path' },
                 { 'saadparwaiz1/cmp_luasnip' },
                 { 'hrsh7th/cmp-nvim-lua' },
-
             },
             config = function()
                 -- This is where all the LSP shenanigans will live
@@ -177,6 +178,7 @@ return {
                     handlers = {
                         lsp_zero.default_setup,
                         lua_ls = function()
+                            require("neodev")
                             -- (Optional) Configure lua language server for neovim
                             local lua_opts = lsp_zero.nvim_lua_ls()
                             require('lspconfig').lua_ls.setup(lua_opts)

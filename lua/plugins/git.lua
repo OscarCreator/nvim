@@ -9,5 +9,6 @@ return {
     },
     {
         'ThePrimeagen/git-worktree.nvim',
+        priority = 100,
     },
 }
