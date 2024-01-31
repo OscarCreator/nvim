@@ -1,7 +1,8 @@
 return {
     {
         'theprimeagen/harpoon',
-        init = function()
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
             local mark = require("harpoon.mark")
             local ui = require("harpoon.ui")
 

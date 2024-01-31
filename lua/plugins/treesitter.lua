@@ -2,7 +2,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        config = {
+        opts = {
             -- A list of parser names, or "all"
             ensure_installed = { "vimdoc", "lua", "rust" },
 

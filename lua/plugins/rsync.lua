@@ -5,7 +5,7 @@ return {
         dependencies = {
             { 'nvim-lua/plenary.nvim' }
         },
-        config = {
+        opts = {
             fugitive_sync = true
         }
     },
