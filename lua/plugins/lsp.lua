@@ -64,6 +64,15 @@ return {
                 sources = {
                     { name = "cody" },
                     { name = "nvim_lsp" },
+                    { name = "path" },
+                    { name = "buffer" },
+                    { name = "nvim_lua" },
+                    { name = "luasnip" },
+                },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end
                 },
                 experimental = { ghost_text = true },
                 formatting = lsp_zero.cmp_format(),
@@ -116,7 +125,6 @@ return {
                 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
                 vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-                -- vim.keymap.set("n", "<space>e", function() vim.diagnostic.show_line_diagnostics() end, opts)
                 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
                 vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
