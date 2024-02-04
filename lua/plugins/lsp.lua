@@ -1,14 +1,5 @@
 return {
     {
-        'folke/neodev.nvim',
-        opts = {},
-    },
-    {
-        'sourcegraph/sg.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = {},
-    },
-    {
         'rust-lang/rust.vim',
         ft = "rust"
     },
@@ -62,7 +53,6 @@ return {
 
             cmp.setup({
                 sources = {
-                    { name = "cody" },
                     { name = "nvim_lsp" },
                     { name = "path" },
                     { name = "buffer" },
@@ -103,6 +93,10 @@ return {
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'folke/neodev.nvim' },
+            {
+                'folke/neodev.nvim',
+                opts = {},
+            },
         },
         config = function()
             -- This is where all the LSP shenanigans will live
