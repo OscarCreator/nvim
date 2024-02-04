@@ -1,6 +1,6 @@
 local function t(s)
     return function()
-        return require('telescope.builtin')[s]
+        require('telescope.builtin')[s]()
     end
 end
 
@@ -9,7 +9,7 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
-            { 'ThePrimeagen/git-worktree.nvim'},
+            { 'ThePrimeagen/git-worktree.nvim' },
         },
         cmd = { "Telescope" },
         keys = {

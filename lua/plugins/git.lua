@@ -8,11 +8,8 @@ return {
         'tpope/vim-fugitive',
     },
     {
-        'ThePrimeagen/git-worktree.nvim',
-        lazy = true,
-    },
-    {
         'lewis6991/gitsigns.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
         opts = {},
     }
 }
