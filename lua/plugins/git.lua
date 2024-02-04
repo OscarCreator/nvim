@@ -11,4 +11,8 @@ return {
         'ThePrimeagen/git-worktree.nvim',
         priority = 100,
     },
+    {
+        'lewis6991/gitsigns.nvim',
+        opts = {},
+    }
 }

@@ -14,6 +14,7 @@ return {
                     end
                 end, 'diff', 'diagnostics' },
                 lualine_x = {
+                    'require("rsync").status()',
                     'encoding',
                     'fileformat',
                     'filetype'
