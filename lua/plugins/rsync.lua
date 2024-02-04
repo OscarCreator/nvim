@@ -1,6 +1,7 @@
 return {
     {
-        dir = '~/personal/rsync.nvim',
+        'OscarCreator/rsync.nvim',
+        dev = false,
         build = 'make',
         dependencies = {
             { 'nvim-lua/plenary.nvim' }

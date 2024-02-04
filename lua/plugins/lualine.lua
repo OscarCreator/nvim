@@ -2,7 +2,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         lazy = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {
             sections = {
                 lualine_b = { 'branch', function()
