@@ -9,7 +9,7 @@ return {
     },
     {
         'ThePrimeagen/git-worktree.nvim',
-        priority = 100,
+        lazy = true,
     },
     {
         'lewis6991/gitsigns.nvim',
