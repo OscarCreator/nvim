@@ -1,3 +1,4 @@
+--- @param s string
 local function t(s)
     return function()
         require('telescope.builtin')[s]()
