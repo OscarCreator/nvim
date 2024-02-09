@@ -5,9 +5,22 @@ local function t(s)
     end
 end
 
+---@param extension string extension name
+---@param s string finder name
+local function te(extension, s)
+    return function ()
+        require('telescope').extensions[extension][s]()
+    end
+end
+
 return {
     {
         'nvim-telescope/telescope.nvim',
+        opts = {
+            defaults = {
+                path_display = { "smart" }
+            }
+        },
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
             { 'ThePrimeagen/git-worktree.nvim' },
@@ -20,8 +33,8 @@ return {
             { '<leader>fh', t("help_tags") },
             { '<leader>vm', t("keymaps") },
             { '<leader>vc', t("commands") },
-            { '<leader>wl', t("extensions.git_worktree.git_worktrees") },
-            { '<leader>wl', t("extensions.git_worktree.create_git_worktree") },
+            { '<leader>wl', te("git_worktree", "git_worktrees") },
+            { '<leader>wc', te("git_worktree", "create_git_worktree") },
             { '<leader>ps', function()
                 local builtin = require('telescope.builtin')
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
@@ -45,8 +58,9 @@ return {
                 silent = true,
             }
         },
-        config = function()
+        config = function(opts)
             require("telescope").load_extension("git_worktree")
+            require("telescope").setup(opts.opts)
         end
     },
 }

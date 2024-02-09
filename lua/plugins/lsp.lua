@@ -37,13 +37,11 @@ return {
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local cmp_action = lsp_zero.cmp_action()
 
-            lsp_zero.set_preferences({
-                sign_icons = {
-                    error = 'E',
-                    warn = 'W',
-                    hint = 'H',
-                    info = 'I',
-                }
+            lsp_zero.set_sign_icons({
+                error = 'E',
+                warn = 'W',
+                hint = 'H',
+                info = 'I',
             })
 
             vim.diagnostic.config({
@@ -107,9 +105,6 @@ return {
             --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
             lsp_zero.on_attach(function(client, bufnr)
                 -- see :help lsp-zero-keybindings
-                -- to learn the available actions
-                -- TODO not needed? lsp_zero.default_keymaps({ buffer = bufnr })
-                local lsp_group = vim.api.nvim_create_augroup("LspGroup", {})
 
                 local opts = { buffer = bufnr, remap = false }
 
@@ -125,17 +120,6 @@ return {
                 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-                -- format on save when lsp have capability to do it
-                if client.supports_method("textDocument/formatting") then
-                    vim.api.nvim_clear_autocmds({ group = lsp_group, buffer = bufnr })
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        group = lsp_group,
-                        buffer = bufnr,
-                        callback = function()
-                            vim.lsp.buf.format()
-                        end
-                    })
-                end
             end)
 
             require('mason-lspconfig').setup({
