@@ -38,10 +38,10 @@ return {
             local cmp_action = lsp_zero.cmp_action()
 
             lsp_zero.set_sign_icons({
-                error = 'E',
-                warn = 'W',
-                hint = 'H',
-                info = 'I',
+                error = '󰅙',
+                warn = '󰌵',
+                hint = '',
+                info = '',
             })
 
             vim.diagnostic.config({

@@ -4,7 +4,21 @@ return {
         build = ':TSUpdate',
         opts = {
             -- A list of parser names, or "all"
-            ensure_installed = { "vimdoc", "lua", "rust" },
+            ensure_installed = {
+                "vimdoc",
+                "lua",
+                "rust",
+                "bash",
+                "c",
+                "diff",
+                "gitcommit",
+                "json",
+                "make",
+                "markdown",
+                "query",
+                "vim",
+                "python"
+            },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
@@ -32,4 +46,9 @@ return {
         'nvim-treesitter/playground',
         cmd = "TSPlaygroundToggle",
     },
+    {
+        'tree-sitter-grammars/tree-sitter-tcl',
+        dev = false,
+        build = 'make',
+    }
 }
