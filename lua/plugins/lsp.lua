@@ -1,7 +1,11 @@
 return {
     {
         'rust-lang/rust.vim',
-        ft = "rust"
+        ft = "rust",
+        lazy = false,
+        init = function()
+            vim.g.rustfmt_autosave = 1
+        end
     },
     {
         'VonHeikemen/lsp-zero.nvim',

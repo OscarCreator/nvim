@@ -15,4 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("base.set")
 
-require("lazy").setup("plugins")
+require("lazy").setup({
+    spec = { import = "plugins" },
+    dev = {
+        path = "~/personal"
+    },
+})
