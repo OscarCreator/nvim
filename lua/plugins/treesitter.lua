@@ -47,10 +47,5 @@ return {
     {
         'nvim-treesitter/playground',
         cmd = "TSPlaygroundToggle",
-    },
-    {
-        'tree-sitter-grammars/tree-sitter-tcl',
-        dev = false,
-        build = 'make',
     }
 }

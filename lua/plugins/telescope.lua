@@ -8,7 +8,7 @@ end
 ---@param extension string extension name
 ---@param s string finder name
 local function te(extension, s)
-    return function ()
+    return function()
         require('telescope').extensions[extension][s]()
     end
 end
@@ -38,6 +38,12 @@ return {
             { '<leader>ps', function()
                 local builtin = require('telescope.builtin')
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            end
+            },
+            { '<leader>fw', function()
+                local builtin = require('telescope.builtin')
+                local word = vim.fn.expand("<cword>")
+                builtin.live_grep({ default_text = word })
             end
             },
             {

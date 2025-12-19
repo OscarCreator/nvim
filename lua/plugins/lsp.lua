@@ -2,10 +2,23 @@ return {
     {
         'rust-lang/rust.vim',
         ft = "rust",
-        lazy = false,
         init = function()
             vim.g.rustfmt_autosave = 1
         end
+    },
+    {
+        'saecki/crates.nvim',
+        event = { "BufRead Cargo.toml" },
+        config = function()
+            require("crates").setup({
+                lsp = {
+                    enabled = true,
+                    actions = true,
+                    completion = true,
+                    hover = true,
+                },
+            })
+        end,
     },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -21,7 +34,9 @@ return {
     {
         'williamboman/mason.nvim',
         lazy = false,
-        config = true,
+        config = {
+            PATH = "append"
+        },
     },
 
     -- Autocompletion
@@ -54,13 +69,16 @@ return {
             })
 
             cmp.setup({
-                sources = {
+                sources = cmp.config.sources({
                     { name = "nvim_lsp" },
-                    { name = "path" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
                     { name = "luasnip" },
-                },
+                    { name = "nvim_lua" },
+                }, {
+                    -- { name = "crates" },
+                    { name = "path" },
+                    { name = "tags" },
+                    { name = "buffer" },
+                }),
                 snippet = {
                     expand = function(args)
                         require('luasnip').lsp_expand(args.body)
@@ -92,6 +110,7 @@ return {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
+            { 'quangnguyen30192/cmp-nvim-tags' },
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'folke/neodev.nvim' },
@@ -123,7 +142,6 @@ return {
                 vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
                 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-
             end)
 
             require('mason-lspconfig').setup({
